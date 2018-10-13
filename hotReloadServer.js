@@ -1,11 +1,11 @@
 const express = require('express');
-const pathLib = require('path');
+const path = require('path');
 const config = require('./config/config');
 const resData = require('./serverData/resData');
 let app = express();
 
 app.use('/',require('connect-history-api-fallback')());
-app.use('/',express.static(pathLib.resolve(__dirname,'..','build')));
+app.use('/',express.static(path.resolve(__dirname,'..','build')));
 app.get('/api/getLocation',function (req,res) {
     res.status(200).send({cityName:'北京'});
 });
