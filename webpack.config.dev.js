@@ -1,4 +1,4 @@
-const pathLib = require('path');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const OpenBrowser = require('open-browser-webpack-plugin');
@@ -6,18 +6,20 @@ const ExtractText = require('extract-text-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const config = require('./config/config');
+
 module.exports = {
     entry: {
         index: [
             'babel-polyfill',
             'react-hot-loader/patch',
             'webpack-hot-middleware/client?path=http://localhost:8000/__webpack_hmr',
-            pathLib.resolve(__dirname,'frontWeb', 'index.js')
+            path.resolve(__dirname,'app', 'index.js')
         ],
         vendor: ['react','react-dom','react-router-dom','redux','react-redux','redux-saga','swipe-js-iso','react-swipe','react-addons-pure-render-mixin']
     },
+
     output: {
-        path: pathLib.resolve(__dirname, 'build'),
+        path: path.resolve(__dirname, 'build'),
         publicPath: "/",
         filename: '[name].[hash:8].js'
     },
